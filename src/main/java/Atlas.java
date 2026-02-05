@@ -24,8 +24,9 @@ public class Atlas {
                 break;
             }
             if (input.equals("list")){
+                System.out.println("Here are the tasks in your list:");
                 for (Task text : li){
-                    System.out.println("[" + text.getStatusIcon() + "] " + text.description);
+                    System.out.println(text.toString());
                 }
                 continue;
             }
@@ -46,8 +47,29 @@ public class Atlas {
                 System.out.println("[" + li.get(index).getStatusIcon() + "] " + li.get(index).description);
                 continue;
             }
-            li.add(new Task(input));
-            System.out.println("added: " + input);
+
+            // |Week 4 Functions| _____________________________________________________________
+            String[] parts = input.trim().split("\\s+",2);
+            if (input.startsWith("todo")) {
+                li.add(new Todo(parts[1]));
+                System.out.println("Todo Added: " + li.get(li.size() - 1).toString());
+                System.out.println("You now have " + li.size() + " tasks.");
+            }
+            if (input.startsWith("deadline")) {
+                String[] deadlineparts = parts[1].split("/");
+                li.add(new Deadline(deadlineparts[0].trim(), deadlineparts[1]));
+                System.out.println("Deadline Added: " + li.get(li.size() - 1).toString());
+                System.out.println("You now have " + li.size() + " tasks.");
+            }
+            if (input.startsWith("event")) {
+                String[] eventparts = parts[1].split("/");
+                li.add(new Events(eventparts[0].trim(),eventparts[1],eventparts[2]));
+                System.out.println("Todo Added: " + li.get(li.size() - 1).toString());
+                System.out.println("You now have " + li.size() + " tasks.");
+            }
+
+            // li.add(new Task(input))
+            // System.out.println("added: " + input);
 
         }
 
