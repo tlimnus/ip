@@ -3,7 +3,8 @@ public class Deadline extends Task{
 
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
+        String[] parts = by.trim().split("\\s+", 2);
+        this.by = parts[1];
     }
 
     @Override
