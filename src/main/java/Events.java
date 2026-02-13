@@ -4,8 +4,10 @@ public class Events extends Task{
 
     public Events(String description, String from, String to) {
         super(description);
-        this.from = from;
-        this.to = to;
+        String[] part1 = from.trim().split("\\s+", 2);
+        String[] part2 = to.trim().split("\\s+", 2);
+        this.from = part1[1];
+        this.to = part2[1];
     }
 
     @Override
