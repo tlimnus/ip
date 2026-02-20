@@ -22,12 +22,12 @@ public class Atlas {
                     li.add(t);
                 }
                 else if (type.equals("D")) {
-                    Deadline d = new Deadline(parts[2], parts[3]);
+                    Deadline d = new Deadline(parts[2], "i " + parts[3]);
                     if (isDone) d.markAsDone();
                     li.add(d);
                 }
                 else if (type.equals("E")) {
-                    Events e = new Events(parts[2], parts[3], parts[4]);
+                    Events e = new Events(parts[2], "i " + parts[3], "i "+ parts[4]);
                     if (isDone) e.markAsDone();
                     li.add(e);
                 }
@@ -146,6 +146,14 @@ public class Atlas {
                     saveData(dFile, li);
                     continue;
                 }
+
+                 if (input.startsWith("delete")){
+                System.out.println("Noted I've removed this task: " + li.get(Integer.parseInt(parts[1]) - 1));
+                li.remove(Integer.parseInt(parts[1]) - 1);
+                System.out.println("You now have " + li.size() + " tasks.");
+                saveData(dFile,  li);
+                continue;
+                 }
 
                 System.out.println("OI! I DONT UNDERSTAND! USE A PROPER COMMAND");
 
