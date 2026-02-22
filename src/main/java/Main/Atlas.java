@@ -1,3 +1,5 @@
+package Main;
+
 import java.util.Scanner;
 import java.util.*;
 import java.io.*;
@@ -60,9 +62,9 @@ public class Atlas {
         dFile.getParentFile().mkdirs();
         try{
             if (dFile.createNewFile()){
-                System.out.println("...Data Storage Created...");
+                System.out.println("...Data Main.Storage Created...");
             } else {
-                System.out.println("...Data Storage Loaded...");
+                System.out.println("...Data Main.Storage Loaded...");
             }
         } catch (IOException e) {
             System.out.println("Error Loading!");
@@ -121,7 +123,7 @@ public class Atlas {
                             throw new AtlasException("HEYHEYHEY, YOU DIDNT WRITE ANYTHING SIA");
                         }
                         li.add(new Todo(parts[1]));
-                        System.out.println("Todo Added: " + li.get(li.size() - 1).toString());
+                        System.out.println("Main.Todo Added: " + li.get(li.size() - 1).toString());
                         System.out.println("You now have " + li.size() + " tasks.");
                         saveData(dFile, li);
                         continue;
@@ -133,7 +135,7 @@ public class Atlas {
                 if (input.startsWith("deadline")) {
                     String[] deadlineparts = parts[1].split("/");
                     li.add(new Deadline(deadlineparts[0].trim(), deadlineparts[1]));
-                    System.out.println("Deadline Added: " + li.get(li.size() - 1).toString());
+                    System.out.println("Main.Deadline Added: " + li.get(li.size() - 1).toString());
                     System.out.println("You now have " + li.size() + " tasks.");
                     saveData(dFile, li);
                     continue;
@@ -141,7 +143,7 @@ public class Atlas {
                 if (input.startsWith("event")) {
                     String[] eventparts = parts[1].split("/");
                     li.add(new Events(eventparts[0].trim(), eventparts[1], eventparts[2]));
-                    System.out.println("Todo Added: " + li.get(li.size() - 1).toString());
+                    System.out.println("Main.Todo Added: " + li.get(li.size() - 1).toString());
                     System.out.println("You now have " + li.size() + " tasks.");
                     saveData(dFile, li);
                     continue;
